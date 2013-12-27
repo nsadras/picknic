@@ -115,6 +115,7 @@ int layout com_facebook_search_bar_layout 0x7f03000d
 int layout com_facebook_usersettingsfragment 0x7f03000e
 int menu login 0x7f090000
 int string action_settings 0x7f07001a
+int string app_id 0x7f07001c
 int string app_name 0x7f070019
 int string com_facebook_choose_friends 0x7f07000f
 int string com_facebook_dialogloginactivity_ok_button 0x7f070000

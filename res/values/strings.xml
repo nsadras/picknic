@@ -4,5 +4,6 @@
     <string name="app_name">Picknic</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="app_id">227687914077728</string>
 
 </resources>
