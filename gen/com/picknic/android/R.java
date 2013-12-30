@@ -220,7 +220,6 @@ containing a value of this type.
     }
     public static final class id {
         public static final int action_settings=0x7f040019;
-        public static final int authButton=0x7f040003;
         public static final int com_facebook_login_activity_progress_bar=0x7f040006;
         public static final int com_facebook_picker_activity_circle=0x7f040005;
         public static final int com_facebook_picker_checkbox=0x7f040008;
@@ -242,6 +241,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_logo_image=0x7f040016;
         public static final int com_facebook_usersettingsfragment_profile_name=0x7f040017;
         public static final int large=0x7f040002;
+        public static final int loginButton=0x7f040003;
         public static final int normal=0x7f040001;
         public static final int picker_subtitle=0x7f040013;
         public static final int small=0x7f040000;

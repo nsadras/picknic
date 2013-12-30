@@ -6,6 +6,7 @@ import com.parse.ParseFacebookUtils;
 
 public class PicknicApplication extends Application {
 	
+	static final String TAG = "PicknicApp";
 	@Override
 	public void onCreate(){
 		super.onCreate();
