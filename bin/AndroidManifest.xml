@@ -5,16 +5,17 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="com.picknic.android.PicknicApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="com.picknic.android.PicknicApplication" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.picknic.android.LoginActivity"
             android:label="@string/app_name" >
@@ -24,7 +25,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:resource="@string/app_id" android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:resource="@string/app_id"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name="com.picknic.android.EventListActivity"
+            android:label="@string/title_event_list" >
+        </activity>
+        <activity
+            android:name="com.picknic.android.EventDetailActivity"
+            android:label="@string/title_event_detail"
+            android:parentActivityName=".EventListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EventListActivity" />
+        </activity>
     </application>
 
 </manifest>
