@@ -37,6 +37,12 @@ public class LoginActivity extends Activity {
 			}
 			
 		});
+        
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
+                // Go to the newsfeed activity
+                showEventListActivity();
+        }
     }
     
     @Override
