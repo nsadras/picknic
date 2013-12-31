@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+
 /**
  * An activity representing a list of Events. This activity has different
  * presentations for handset and tablet-size devices. On handsets, the activity
@@ -42,6 +43,7 @@ public class EventListActivity extends FragmentActivity implements
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
+			
 			((EventListFragment) getSupportFragmentManager().findFragmentById(
 					R.id.event_list)).setActivateOnItemClick(true);
 		}
