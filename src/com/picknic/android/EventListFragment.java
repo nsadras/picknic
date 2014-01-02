@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.picknic.android.dummy.DummyContent;
+import com.picknic.android.content.RewardListContent;
 
 /**
  * A list fragment representing a list of Events. This fragment also supports
@@ -19,8 +19,8 @@ import com.picknic.android.dummy.DummyContent;
  * interface.
  */
 public class EventListFragment extends ListFragment {
-
 	/**
+
 	 * The serialization (saved instance state) Bundle key representing the
 	 * activated item position. Only used on tablets.
 	 */
@@ -71,9 +71,9 @@ public class EventListFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 
 		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+		setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+				android.R.id.text1, RewardListContent.ITEMS));
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class EventListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+		mCallbacks.onItemSelected(RewardListContent.ITEMS.get(position).id);
 	}
 
 	@Override
