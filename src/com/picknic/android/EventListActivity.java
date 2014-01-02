@@ -1,5 +1,7 @@
 package com.picknic.android;
 
+import com.picknic.android.content.RewardListContent;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -33,7 +35,12 @@ public class EventListActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_event_list);
-
+		
+		// fill the reward list if it's being loaded for the first time
+		if(savedInstanceState == null){
+			RewardListContent.setContent();
+		}
+		
 		if (findViewById(R.id.event_detail_container) != null) {
 			// The detail container view will be present only in the
 			// large-screen layouts (res/values-large and

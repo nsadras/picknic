@@ -6,29 +6,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
+ * Class for fetching app content from Parse
  */
 public class RewardListContent {
 
 	/**
-	 * An array of sample (dummy) items.
+	 * An array of reward items.
 	 */
 	public static List<RewardItem> ITEMS = new ArrayList<RewardItem>();
 
 	/**
-	 * A map of sample (dummy) items, by ID.
+	 * A map of reward items, by ID.
 	 */
 	public static Map<String, RewardItem> ITEM_MAP = new HashMap<String, RewardItem>();
 
-	static {
-		// Add 3 sample items.
-		addItem(new RewardItem("1", "Item 1"));
-		addItem(new RewardItem("2", "Item 2"));
-		addItem(new RewardItem("3", "Item 3"));
+	public static void setContent(){
+		addItem(new RewardItem("1", "Thing 1"));
+		addItem(new RewardItem("2", "Thing 2"));
+		addItem(new RewardItem("3", "Thing 3"));
 	}
+	
 
 	private static void addItem(RewardItem item) {
 		ITEMS.add(item);
@@ -36,7 +33,7 @@ public class RewardListContent {
 	}
 
 	/**
-	 * A dummy item representing a piece of content.
+	 * A reward that can be claimed by the user
 	 */
 	public static class RewardItem {
 		public String id;
