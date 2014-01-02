@@ -69,7 +69,6 @@ public class EventListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, RewardListContent.ITEMS));
@@ -78,7 +77,7 @@ public class EventListFragment extends ListFragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
+		view.requestLayout();
 		// Restore the previously serialized activated item position.
 		if (savedInstanceState != null
 				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
@@ -115,6 +114,7 @@ public class EventListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
+		
 		mCallbacks.onItemSelected(RewardListContent.ITEMS.get(position).id);
 	}
 

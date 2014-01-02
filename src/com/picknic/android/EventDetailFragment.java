@@ -2,6 +2,7 @@ package com.picknic.android;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,9 +55,10 @@ public class EventDetailFragment extends Fragment {
 
 		// Show the content as text in a TextView.
 		if (mItem != null) {
+			Log.d("serverside", mItem.shortDesc);
 			((TextView) rootView.findViewById(R.id.event_detail))
-					.setText(mItem.content);
-		}
+					.setText(mItem.shortDesc);
+		} 
 
 		return rootView;
 	}

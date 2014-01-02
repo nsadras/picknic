@@ -1,10 +1,13 @@
 package com.picknic.android;
 
-import com.picknic.android.content.RewardListContent;
-
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
+
+import com.picknic.android.content.RewardListContent;
 
 
 /**
@@ -30,15 +33,18 @@ public class EventListActivity extends FragmentActivity implements
 	 * device.
 	 */
 	private boolean mTwoPane;
-
+	public Dialog progressDialog;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		
 		setContentView(R.layout.activity_event_list);
 		
 		// fill the reward list if it's being loaded for the first time
-		if(savedInstanceState == null){
-			RewardListContent.setContent();
+		if(savedInstanceState == null){	
+			RewardListContent.setContent(this);	
 		}
 		
 		if (findViewById(R.id.event_detail_container) != null) {
@@ -50,13 +56,17 @@ public class EventListActivity extends FragmentActivity implements
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
+			ListAdapter adapter = ((EventListFragment) getSupportFragmentManager().findFragmentById(
+					R.id.event_list)).getListAdapter();
 			
+			((BaseAdapter) adapter).notifyDataSetChanged();
 			((EventListFragment) getSupportFragmentManager().findFragmentById(
 					R.id.event_list)).setActivateOnItemClick(true);
 		}
 
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
+	
 
 	/**
 	 * Callback method from {@link EventListFragment.Callbacks} indicating that
@@ -83,4 +93,6 @@ public class EventListActivity extends FragmentActivity implements
 			startActivity(detailIntent);
 		}
 	}
+	
+ 
 }
