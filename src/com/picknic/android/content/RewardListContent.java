@@ -7,10 +7,8 @@ import java.util.Map;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
+import android.widget.ArrayAdapter;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -81,8 +79,13 @@ public class RewardListContent {
 		        }
 		    	stopLoading();
 		    	dataLoaded = true;
-		    	activity.recreate(); // creates annoying black flash, but is necessary for now
+		    	EventListFragment listFragment = ((EventListFragment) activity.getSupportFragmentManager().findFragmentById(
+						R.id.event_list));
 		    	
+		    	// refresh listFragment
+		    	listFragment.setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(activity,
+						android.R.layout.simple_list_item_activated_1,
+						android.R.id.text1, RewardListContent.ITEMS));		    	
 		    }
 		});
 		
