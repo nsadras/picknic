@@ -57,7 +57,7 @@ public class EventDetailFragment extends Fragment {
 		if (mItem != null) {
 			Log.d("serverside", mItem.shortDesc);
 			((TextView) rootView.findViewById(R.id.event_detail))
-					.setText(mItem.shortDesc);
+					.setText(mItem.longDesc);
 		} 
 
 		return rootView;

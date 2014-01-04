@@ -1,9 +1,13 @@
 package com.picknic.android;
 
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 
@@ -26,14 +30,16 @@ import com.picknic.android.content.RewardListContent;
  * {@link EventListFragment.Callbacks} interface to listen for item selections.
  */
 public class EventListActivity extends FragmentActivity implements
-		EventListFragment.Callbacks {
+		EventListFragment.Callbacks, ActionBar.TabListener{
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
 	 * device.
 	 */
 	private boolean mTwoPane;
+	private ActionBar actionBar;
 	public Dialog progressDialog;
+	private String[] tabs = { "Top Rated", "Newsfeed", "My Basket" }; // tab labels
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,14 @@ public class EventListActivity extends FragmentActivity implements
 			((EventListFragment) getSupportFragmentManager().findFragmentById(
 					R.id.event_list)).setActivateOnItemClick(true);
 		}
+		
+		// setup menu tabs
+		actionBar = getActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		for (String tab_name : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tab_name)
+                    .setTabListener(this));
+        }
 
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
@@ -92,6 +106,28 @@ public class EventListActivity extends FragmentActivity implements
 			detailIntent.putExtra(EventDetailFragment.ARG_ITEM_ID, id);
 			startActivity(detailIntent);
 		}
+	}
+
+
+	// TODO implement auto-generated methods
+	@Override
+	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+		// TODO Auto-generated method stub
+		
 	}
 	
  
