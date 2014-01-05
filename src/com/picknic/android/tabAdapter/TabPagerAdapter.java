@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.picknic.android.TopMasterFragment;
+import com.picknic.android.PopularMasterFragment;
 import com.picknic.android.NewsfeedMasterFragment;
 import com.picknic.android.BasketMasterFragment;
 
@@ -19,7 +19,7 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
         switch (index) {
         case 0:
             // Most Popular fragment activity
-            return new TopMasterFragment();
+            return new PopularMasterFragment();
         case 1:
             // Newsfeed fragment activity
             return new NewsfeedMasterFragment();

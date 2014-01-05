@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -14,9 +13,9 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.picknic.android.EventListActivity;
-import com.picknic.android.EventListFragment;
-import com.picknic.android.R;
+import com.picknic.android.MainActivity;
+import com.picknic.android.PopularListFragment;
+import com.picknic.android.PopularMasterFragment;
 
 /**
  * Class for fetching app content from Parse
@@ -24,7 +23,8 @@ import com.picknic.android.R;
 public class RewardListContent {
 	
 	public static boolean dataLoaded = false;
-	public static EventListActivity activity;
+	public static MainActivity activity;
+	public static PopularMasterFragment list_fragment;
 	/**
 	 * An array of reward items.
 	 */
@@ -35,10 +35,10 @@ public class RewardListContent {
 	 */
 	public static Map<String, RewardItem> ITEM_MAP = new HashMap<String, RewardItem>();
 
-	public static void setContent(Context context){
+	public static void setContent(Context context, PopularMasterFragment fragment){
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Deal");
-		activity = (EventListActivity) context;
-		
+		activity = (MainActivity) context;
+		list_fragment = fragment;
 		/**
 		//synchronous version, use if asynchronous version explodes
 		startLoading();
@@ -61,7 +61,7 @@ public class RewardListContent {
 		if(dataLoaded){ // check if list has already been updated
 			return;
 		}
-		startLoading();
+		//startLoading();
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> dealList, ParseException e) {
 		       
@@ -77,10 +77,10 @@ public class RewardListContent {
 		        } else {
 		            Log.d("score", "Error: " + e.getMessage());
 		        }
-		    	stopLoading();
+		    	//stopLoading();
 		    	dataLoaded = true;
-		    	EventListFragment listFragment = ((EventListFragment) activity.getSupportFragmentManager().findFragmentById(
-						R.id.event_list));
+		    	PopularListFragment listFragment = (PopularListFragment) (list_fragment.getChildFragmentManager().findFragmentByTag(
+		    			"popular_list"));
 		    	
 		    	// refresh listFragment
 		    	listFragment.setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(activity,
@@ -93,7 +93,7 @@ public class RewardListContent {
 	
 
 	// show progress dialog
-	public static void startLoading() {
+	/**public static void startLoading() {
 	    //progressDialog = new ProgressDialog(this);
 	    activity.progressDialog = ProgressDialog.show(
 				activity, "", "Fetching data...", true
@@ -104,7 +104,7 @@ public class RewardListContent {
 	public static void stopLoading() {
 	    activity.progressDialog.dismiss();
 	    activity.progressDialog = null;
-	}
+	} **/
 	
 	private static void addItem(RewardItem item) {
 		ITEMS.add(item);

@@ -12,9 +12,9 @@ import android.view.MenuItem;
  * side-by-side with a list of items in a {@link EventListActivity}.
  * <p>
  * This activity is mostly just a 'shell' activity containing nothing more than
- * a {@link EventDetailFragment}.
+ * a {@link PopularDetailFragment}.
  */
-public class EventDetailActivity extends FragmentActivity {
+public class PopularDetailActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +37,9 @@ public class EventDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(EventDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(EventDetailFragment.ARG_ITEM_ID));
-			EventDetailFragment fragment = new EventDetailFragment();
+			arguments.putString(PopularDetailFragment.ARG_ITEM_ID, getIntent()
+					.getStringExtra(PopularDetailFragment.ARG_ITEM_ID));
+			PopularDetailFragment fragment = new PopularDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.event_detail_container, fragment).commit();
@@ -58,7 +58,7 @@ public class EventDetailActivity extends FragmentActivity {
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
 			NavUtils.navigateUpTo(this, new Intent(this,
-					EventListActivity.class));
+					MainActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

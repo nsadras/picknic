@@ -13,9 +13,9 @@ import com.picknic.android.content.RewardListContent;
 /**
  * A fragment representing a single Event detail screen. This fragment is either
  * contained in a {@link EventListActivity} in two-pane mode (on tablets) or a
- * {@link EventDetailActivity} on handsets.
+ * {@link PopularDetailActivity} on handsets.
  */
-public class EventDetailFragment extends Fragment {
+public class PopularDetailFragment extends Fragment {
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -31,7 +31,7 @@ public class EventDetailFragment extends Fragment {
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public EventDetailFragment() {
+	public PopularDetailFragment() {
 	}
 
 	@Override
