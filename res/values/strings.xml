@@ -7,5 +7,6 @@
     <string name="app_id">227687914077728</string>
     <string name="title_event_list">Rewards</string>
     <string name="title_event_detail">Reward Details</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

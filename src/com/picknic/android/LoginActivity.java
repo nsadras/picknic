@@ -40,8 +40,8 @@ public class LoginActivity extends Activity {
         
         ParseUser currentUser = ParseUser.getCurrentUser();
         if ((currentUser != null) && ParseFacebookUtils.isLinked(currentUser)) {
-                // Go to the newsfeed activity
-                showEventListActivity();
+                // Go to the main activity
+                showMainActivity();
         }
     }
     
@@ -66,11 +66,11 @@ public class LoginActivity extends Activity {
                         } else if (user.isNew()) {
                                 Log.d(PicknicApplication.TAG,
                                                 "User signed up and logged in through Facebook!");
-                                showEventListActivity();
+                                showMainActivity();
                         } else {
                                 Log.d(PicknicApplication.TAG,
                                                 "User logged in through Facebook!");
-                                showEventListActivity();                              
+                                showMainActivity();                              
                         }
                 }
         });
@@ -79,8 +79,8 @@ public class LoginActivity extends Activity {
     /**
      * Launch the EventListActivity
      */
-    private void showEventListActivity(){
-    	Intent intent = new Intent(this,EventListActivity.class);
+    private void showMainActivity(){
+    	Intent intent = new Intent(this,MainActivity.class);
     	startActivity(intent);
     }
     
