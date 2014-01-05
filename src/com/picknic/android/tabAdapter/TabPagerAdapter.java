@@ -18,13 +18,13 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int index) {
         switch (index) {
         case 0:
-            // Top Rated fragment activity
+            // Most Popular fragment activity
             return new TopMasterFragment();
         case 1:
-            // Games fragment activity
+            // Newsfeed fragment activity
             return new NewsfeedMasterFragment();
         case 2:
-            // Movies fragment activity
+            // My Basket (user info) fragment activity
             return new BasketMasterFragment();
         }
  
