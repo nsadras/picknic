@@ -3,14 +3,12 @@ package com.picknic.android;
 import com.picknic.android.content.RewardListContent;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
+
 
 /*
  *  A fragment that displays the most popular deals
@@ -41,10 +39,7 @@ public class PopularMasterFragment extends Fragment{
 			
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
-			ListAdapter adapter = ((PopularListFragment) getChildFragmentManager().findFragmentByTag(
-					listTag)).getListAdapter();
-			
-			
+
 			((PopularListFragment) getChildFragmentManager().findFragmentByTag(
 					listTag)).setActivateOnItemClick(true);
 		}

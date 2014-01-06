@@ -3,10 +3,10 @@ package com.picknic.android;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
@@ -19,6 +19,7 @@ public class MainActivity extends FragmentActivity implements
 	private TabPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	private boolean mTwoPane;
+	public Dialog progressDialog;
 	
 	// tab labels
 	private String[] tabs = { "Top Rated", "Newsfeed", "My Basket" }; 

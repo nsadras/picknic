@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -39,29 +40,11 @@ public class RewardListContent {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Deal");
 		activity = (MainActivity) context;
 		list_fragment = fragment;
-		/**
-		//synchronous version, use if asynchronous version explodes
-		startLoading();
-		try{
-			List<ParseObject> dealList = query.find();
-			int id = 1;
-			for(ParseObject deal : dealList){
-				Log.d("score", deal.getString("descShort"));
-				RewardItem reward = new RewardItem(Integer.toString(id), deal.getString("descShort"), deal.getString("descLong"));
-				addItem(reward);
-				id++;
-			}
-		} catch (com.parse.ParseException e) {
-			Log.d("reward", e.toString());
-		}
-		stopLoading();
-		activity.notify();
-		**/
-		
+
 		if(dataLoaded){ // check if list has already been updated
 			return;
 		}
-		//startLoading();
+		startLoading();
 		query.findInBackground(new FindCallback<ParseObject>() {
 		    public void done(List<ParseObject> dealList, ParseException e) {
 		       
@@ -77,7 +60,7 @@ public class RewardListContent {
 		        } else {
 		            Log.d("score", "Error: " + e.getMessage());
 		        }
-		    	//stopLoading();
+		    	stopLoading();
 		    	dataLoaded = true;
 		    	PopularListFragment listFragment = (PopularListFragment) (list_fragment.getChildFragmentManager().findFragmentByTag(
 		    			"popular_list"));
@@ -93,10 +76,9 @@ public class RewardListContent {
 	
 
 	// show progress dialog
-	/**public static void startLoading() {
-	    //progressDialog = new ProgressDialog(this);
+	public static void startLoading() {
 	    activity.progressDialog = ProgressDialog.show(
-				activity, "", "Fetching data...", true
+				activity, "", "Loading...", true
 		);
 	}
 
@@ -104,7 +86,7 @@ public class RewardListContent {
 	public static void stopLoading() {
 	    activity.progressDialog.dismiss();
 	    activity.progressDialog = null;
-	} **/
+	}
 	
 	private static void addItem(RewardItem item) {
 		ITEMS.add(item);
