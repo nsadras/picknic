@@ -11,14 +11,6 @@
 	    android:layout_marginLeft="16dp"
 	    android:layout_marginRight="16dp" />
       
-    <!--  <fragment 
-	    android:id="@+id/event_list"
-	    android:name="com.picknic.android.PopularListFragment"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:layout_marginLeft="16dp"
-	    android:layout_marginRight="16dp" 
-	    tools:context=".PopularMasterFragment"
-	    tools:layout="@android:layout/list_content" /> -->
+
 
 </LinearLayout>
