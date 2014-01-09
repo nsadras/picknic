@@ -53,7 +53,7 @@ public class RewardListContent {
 		            int id = 1;
 		            for(ParseObject deal : dealList){
 			    		Log.d("score", deal.getString("descShort"));
-			        	RewardItem reward = new RewardItem(Integer.toString(id), deal.getString("descShort"), deal.getString("descLong"));
+			        	RewardItem reward = new RewardItem(Integer.toString(id), deal);
 			    		addItem(reward);
 			        	id++;
 			        }
@@ -100,16 +100,18 @@ public class RewardListContent {
 		public String id;
 		public String shortDesc;
 		public String longDesc;
+		public String sponsor;
 
-		public RewardItem(String id, String shortDesc, String longDesc) {
+		public RewardItem(String id, ParseObject deal ) {
 			this.id = id;
-			this.shortDesc = shortDesc;
-			this.longDesc = longDesc;
+			this.shortDesc = deal.getString("descShort");
+			this.longDesc = deal.getString("descLong");
+			this.sponsor = deal.getString("sponsor");
 		}
 
 		@Override
 		public String toString() {
-			return shortDesc;
+			return sponsor + ": " + shortDesc;
 		}
 	}
 }

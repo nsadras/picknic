@@ -34,6 +34,7 @@ public class NewsfeedContent {
 	public static Map<String, NewsfeedItem> ITEM_MAP = new HashMap<String, NewsfeedItem>();
 
 	public static void setContent(Context context, PopularMasterFragment fragment){
+		
 		/*
 		 *  TODO: write a parse query that finds all picknik user that are friends of the
 		 *  current user, finds their transactions, and organizes them chronologically
@@ -68,10 +69,10 @@ public class NewsfeedContent {
 		public String user; // name of the person who claimed the deal
 		public ParseObject deal;
 
-		public NewsfeedItem(String id, String user, ParseObject deal) {
+		public NewsfeedItem(String id, ParseObject transaction) {
 			this.id = id;
-			this.user = user;
-			this.deal = deal;
+			this.user = transaction.getString("user");
+			this.deal = transaction.getParseObject("deal");
 		}
 
 		@Override
