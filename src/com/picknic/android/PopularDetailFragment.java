@@ -56,7 +56,6 @@ public class PopularDetailFragment extends Fragment {
 
 		// Show the content as text in a TextView.
 		if (mItem != null) {
-			Log.d("serverside", mItem.shortDesc);
 			((TextView) rootView.findViewById(R.id.deal_detail))
 					.setText(mItem.longDesc);
 			

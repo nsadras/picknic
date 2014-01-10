@@ -34,6 +34,7 @@ public class MainActivity extends FragmentActivity implements
         mAdapter = new TabPagerAdapter(getSupportFragmentManager());
  
         viewPager.setAdapter(mAdapter);
+        
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);        
  
         // Adding Tabs
@@ -57,6 +58,7 @@ public class MainActivity extends FragmentActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+        viewPager.setOffscreenPageLimit(3); // forces viewpager to load all 3 child fragments
         
         
         mTwoPane = getResources().getBoolean(R.bool.isTablet);

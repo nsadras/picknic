@@ -1,8 +1,9 @@
 package com.picknic.android;
 
 import android.app.Activity;
-import android.support.v4.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -72,25 +73,24 @@ public class PopularListFragment extends ListFragment {
 		setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, RewardListContent.ITEMS));
-		
 	}
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		view.requestLayout();
+		//super.onViewCreated(view, savedInstanceState);
 		// Restore the previously serialized activated item position.
-
 		if(getResources().getBoolean(R.bool.isTablet)){
 			this.setActivateOnItemClick(true);
 		}
 		
 		if (savedInstanceState != null
 				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
+			Log.d("onViewCreated", "savedInstanceState not null");
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
 	}
+
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -130,6 +130,7 @@ public class PopularListFragment extends ListFragment {
 		if (mActivatedPosition != ListView.INVALID_POSITION) {
 			// Serialize and persist the activated item position.
 			outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
+			
 		}
 	}
 

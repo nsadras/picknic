@@ -69,7 +69,7 @@ public class LoginActivity extends Activity {
                                 showMainActivity();
                         } else {
                                 Log.d(PicknicApplication.TAG,
-                                                "User logged in through Facebook!");
+                                                "User logged in through Facebook!");                            
                                 showMainActivity();                              
                         }
                 }

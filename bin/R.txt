@@ -73,7 +73,7 @@ int drawable com_facebook_top_background 0x7f02001d
 int drawable com_facebook_top_button 0x7f02001e
 int drawable com_facebook_usersettingsfragment_background_gradient 0x7f02001f
 int drawable ic_launcher 0x7f020020
-int id action_settings 0x7f040022
+int id action_settings 0x7f040023
 int id com_facebook_login_activity_progress_bar 0x7f04000b
 int id com_facebook_picker_activity_circle 0x7f04000a
 int id com_facebook_picker_checkbox 0x7f04000d
@@ -94,10 +94,10 @@ int id com_facebook_search_bar_view 0x7f040019
 int id com_facebook_usersettingsfragment_login_button 0x7f04001d
 int id com_facebook_usersettingsfragment_logo_image 0x7f04001b
 int id com_facebook_usersettingsfragment_profile_name 0x7f04001c
-int id deal_detail 0x7f04001f
+int id deal_detail 0x7f040020
 int id event_detail_container 0x7f040003
 int id event_list 0x7f040005
-int id event_list_container 0x7f040021
+int id event_list_container 0x7f040022
 int id large 0x7f040002
 int id loginButton 0x7f040007
 int id logoView 0x7f040006
@@ -105,8 +105,9 @@ int id normal 0x7f040001
 int id outdated_event_list 0x7f040004
 int id pager 0x7f040008
 int id picker_subtitle 0x7f040018
-int id redeemButton 0x7f040020
-int id scanButton 0x7f04001e
+int id points 0x7f04001e
+int id redeemButton 0x7f040021
+int id scanButton 0x7f04001f
 int id small 0x7f040000
 int layout activity_event_detail 0x7f030000
 int layout activity_event_master 0x7f030001

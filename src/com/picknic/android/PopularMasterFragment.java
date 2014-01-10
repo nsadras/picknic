@@ -40,8 +40,8 @@ public class PopularMasterFragment extends Fragment{
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
 
-			((PopularListFragment) getChildFragmentManager().findFragmentByTag(
-					listTag)).setActivateOnItemClick(true);
+			//((PopularListFragment) getChildFragmentManager().findFragmentByTag(
+			//		listTag)).setActivateOnItemClick(true);
 		}
         
 		if(savedInstanceState == null){	
