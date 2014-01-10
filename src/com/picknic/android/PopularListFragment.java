@@ -77,7 +77,7 @@ public class PopularListFragment extends ListFragment {
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		//super.onViewCreated(view, savedInstanceState);
+		super.onViewCreated(view, savedInstanceState);
 		// Restore the previously serialized activated item position.
 		if(getResources().getBoolean(R.bool.isTablet)){
 			this.setActivateOnItemClick(true);

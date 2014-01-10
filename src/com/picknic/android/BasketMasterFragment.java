@@ -37,10 +37,10 @@ public class BasketMasterFragment extends Fragment{
 		user.refreshInBackground(new RefreshCallback() {
             
 			@Override
-            public void done(ParseObject user, ParseException err) {
-				
+            public void done(ParseObject user, ParseException err) {			
 				pointDisplay.setText(Integer.toString(user.getInt("points")) + " points");
 			}
+			
 		});
 		Log.d("parse_debug", Boolean.toString(user.containsKey("points")));
 		
