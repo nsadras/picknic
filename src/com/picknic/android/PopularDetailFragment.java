@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.picknic.android.content.RewardListContent;
@@ -50,14 +51,16 @@ public class PopularDetailFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_event_detail,
+		View rootView = inflater.inflate(R.layout.fragment_deal_detail,
 				container, false);
 
 		// Show the content as text in a TextView.
 		if (mItem != null) {
 			Log.d("serverside", mItem.shortDesc);
-			((TextView) rootView.findViewById(R.id.event_detail))
+			((TextView) rootView.findViewById(R.id.deal_detail))
 					.setText(mItem.longDesc);
+			
+			((Button) rootView.findViewById(R.id.redeemButton)).setText("Redeem - " + mItem.value + " points");
 		} 
 
 		return rootView;

@@ -101,12 +101,14 @@ public class RewardListContent {
 		public String shortDesc;
 		public String longDesc;
 		public String sponsor;
+		public int value;
 
 		public RewardItem(String id, ParseObject deal ) {
 			this.id = id;
 			this.shortDesc = deal.getString("descShort");
 			this.longDesc = deal.getString("descLong");
 			this.sponsor = deal.getString("sponsor");
+			this.value = deal.getInt("cost");
 		}
 
 		@Override
