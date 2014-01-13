@@ -1,5 +1,6 @@
 package com.picknic.android;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.ParseUser;
 import com.picknic.android.content.RewardListContent;
 
 /**
@@ -27,6 +29,8 @@ public class PopularDetailFragment extends Fragment {
 	 * The dummy content this fragment is presenting.
 	 */
 	private RewardListContent.RewardItem mItem;
+	private Button redeemButton;
+	private AlertDialog dialog;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -57,11 +61,44 @@ public class PopularDetailFragment extends Fragment {
 		// Show the content as text in a TextView.
 		if (mItem != null) {
 			((TextView) rootView.findViewById(R.id.deal_detail))
-					.setText(mItem.longDesc);
+					.setText(mItem.deal.getString("descLong"));
 			
-			((Button) rootView.findViewById(R.id.redeemButton)).setText("Redeem - " + mItem.value + " points");
+			redeemButton = ((Button) rootView.findViewById(R.id.redeemButton));
+			redeemButton.setText("Redeem - " + mItem.deal.getInt("cost") + " points");
+			redeemButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					onRedeemButtonClick();	
+				}
+				
+			});
+			
 		} 
 
 		return rootView;
+	}
+	
+	private void onRedeemButtonClick(){
+		//implement
+		Log.d("debug", "redeem button pressed");
+		ParseUser user = ParseUser.getCurrentUser();
+		// TODO: add call to refresh, maybe throw in the loading dialog
+		int user_points = user.getInt("points");
+		int deal_cost = mItem.deal.getInt("cost");
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		if(user_points < deal_cost){
+			builder.setMessage("Sorry, not enough points")
+		       .setTitle("Error");
+			dialog = builder.create();
+			dialog.show();
+		} else {
+			user.put("points", user_points - deal_cost);
+			user.saveInBackground();
+			builder.setMessage("Enjoy your rewards!")
+		       .setTitle("Congrats!");
+			dialog = builder.create();
+			dialog.show();
+		}
 	}
 }

@@ -97,23 +97,17 @@ public class RewardListContent {
 	 * A reward that can be claimed by the user
 	 */
 	public static class RewardItem {
+		public ParseObject deal;
 		public String id;
-		public String shortDesc;
-		public String longDesc;
-		public String sponsor;
-		public int value;
 
 		public RewardItem(String id, ParseObject deal ) {
+			this.deal = deal;
 			this.id = id;
-			this.shortDesc = deal.getString("descShort");
-			this.longDesc = deal.getString("descLong");
-			this.sponsor = deal.getString("sponsor");
-			this.value = deal.getInt("cost");
 		}
 
 		@Override
 		public String toString() {
-			return sponsor + ": " + shortDesc;
+			return deal.getString("sponsor") + ": " + deal.getString("descShort");
 		}
 	}
 }
