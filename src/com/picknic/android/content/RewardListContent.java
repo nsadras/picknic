@@ -99,15 +99,21 @@ public class RewardListContent {
 	public static class RewardItem {
 		public ParseObject deal;
 		public String id;
+		public boolean claimed;
 
 		public RewardItem(String id, ParseObject deal ) {
 			this.deal = deal;
 			this.id = id;
+			this.claimed = isClaimed();
 		}
 
 		@Override
 		public String toString() {
 			return deal.getString("sponsor") + ": " + deal.getString("descShort");
+		}
+		
+		private boolean isClaimed(){
+			return false; //TODO: implement
 		}
 	}
 }

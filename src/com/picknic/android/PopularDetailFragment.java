@@ -1,5 +1,7 @@
 package com.picknic.android;
 
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.picknic.android.content.RewardListContent;
 
@@ -31,6 +36,9 @@ public class PopularDetailFragment extends Fragment {
 	private RewardListContent.RewardItem mItem;
 	private Button redeemButton;
 	private AlertDialog dialog;
+	AlertDialog.Builder builder;
+	private ParseUser user;
+	boolean claimed;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -49,6 +57,7 @@ public class PopularDetailFragment extends Fragment {
 			// to load content from a content provider.
 			mItem = RewardListContent.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
+			user = ParseUser.getCurrentUser(); // is this the best place for this?
 		}
 	}
 
@@ -63,16 +72,24 @@ public class PopularDetailFragment extends Fragment {
 			((TextView) rootView.findViewById(R.id.deal_detail))
 					.setText(mItem.deal.getString("descLong"));
 			
+
+			builder = new AlertDialog.Builder(getActivity());
+			
 			redeemButton = ((Button) rootView.findViewById(R.id.redeemButton));
-			redeemButton.setText("Redeem - " + mItem.deal.getInt("cost") + " points");
-			redeemButton.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					onRedeemButtonClick();	
-				}
-				
-			});
+			if(mItem.claimed){
+				setAlreadyClaimed();
+			} else {
+				redeemButton.setText("Redeem - " + mItem.deal.getInt("cost") + " points");
+				redeemButton.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						onRedeemButtonClick();	
+					}
+					
+				});
+			}
+			
 			
 		} 
 
@@ -82,23 +99,68 @@ public class PopularDetailFragment extends Fragment {
 	private void onRedeemButtonClick(){
 		//implement
 		Log.d("debug", "redeem button pressed");
-		ParseUser user = ParseUser.getCurrentUser();
 		// TODO: add call to refresh, maybe throw in the loading dialog
-		int user_points = user.getInt("points");
-		int deal_cost = mItem.deal.getInt("cost");
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		if(user_points < deal_cost){
+		int userPoints = user.getInt("points");
+		int dealCost = mItem.deal.getInt("cost");
+		if(userPoints < dealCost){
 			builder.setMessage("Sorry, not enough points")
 		       .setTitle("Error");
 			dialog = builder.create();
 			dialog.show();
 		} else {
-			user.put("points", user_points - deal_cost);
+			user.put("points", userPoints - dealCost);				// subtract points
+			ParseRelation<ParseObject> deals = user.getRelation("deals");
+			deals.add(mItem.deal);
+			
+			/**
+			List<Object> dealsClaimed = user.getList("dealsClaimed");
+			if(dealsClaimed == null){
+				List<Object> newDealsClaimed = new ArrayList<Object>();
+				newDealsClaimed.add(mItem.deal);
+				user.put("dealsClaimed", newDealsClaimed);
+			} else {
+				dealsClaimed.add(mItem.deal);	// add current deal to user's list of deals
+				user.put("dealsClaimed", dealsClaimed);
+			}
+			**/
+			
 			user.saveInBackground();
+			
+			ParseObject deal = mItem.deal;
+			deal.increment("numClaimed");
+			deal.saveInBackground();
+			
+			mItem.claimed = true;
+			setAlreadyClaimed(); // change redeem button behavior
+
+			
 			builder.setMessage("Enjoy your rewards!")
 		       .setTitle("Congrats!");
 			dialog = builder.create();
 			dialog.show();
 		}
 	}
+	
+	
+	private void setAlreadyClaimed(){
+		redeemButton.setText("Already Claimed");
+		redeemButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				alreadyClaimed();	
+			}
+			
+		});
+	}
+	/**
+	 * Button behavior if this deal has already been claimed
+	 */
+	private void alreadyClaimed(){
+		builder.setMessage("Already Claimed")
+	       .setTitle("Error");
+		dialog = builder.create();
+		dialog.show();
+	}
+	
 }
