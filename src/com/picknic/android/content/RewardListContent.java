@@ -14,6 +14,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
 import com.picknic.android.MainActivity;
 import com.picknic.android.PopularListFragment;
 import com.picknic.android.PopularMasterFragment;
@@ -49,16 +51,36 @@ public class RewardListContent {
 		    public void done(List<ParseObject> dealList, ParseException e) {
 		       
 		    	if (e == null) {
-		            Log.d("score", "Retrieved " + dealList.size() + " deals");
 		            int id = 1;
+		            ParseUser user = ParseUser.getCurrentUser();
+		            ParseRelation<ParseObject> dealsClaimedRelation = user.getRelation("deals");
+		            List<ParseObject> dealsClaimed; 
+		            
+		            // get list of claimed deals
+		            try{
+		            	dealsClaimed = dealsClaimedRelation.getQuery().find(); // do synchronously because we're already in an async callback
+		            } catch(Exception err){
+		            	Log.d("relation query callback error", err.toString());
+		            	return;
+		            }
+		            
+		            boolean claimed;
 		            for(ParseObject deal : dealList){
-			    		Log.d("score", deal.getString("descShort"));
-			        	RewardItem reward = new RewardItem(Integer.toString(id), deal);
+			    		Log.d("original deal", deal.toString());
+			    		claimed = false;
+			    		// crude n^2 solution, but it works
+			    		for(ParseObject claimedDeal : dealsClaimed){
+			    			if(deal.hasSameId(claimedDeal)){ // check if already claimed
+			    				claimed = true;
+			    				break;
+			    			}
+			    		}
+			    		RewardItem reward = new RewardItem(Integer.toString(id), claimed, deal);
 			    		addItem(reward);
 			        	id++;
 			        }
 		        } else {
-		            Log.d("score", "Error: " + e.getMessage());
+		            Log.d("RewardListContent error", "Error: " + e.getMessage());
 		        }
 		    	stopLoading();
 		    	dataLoaded = true;
@@ -101,19 +123,16 @@ public class RewardListContent {
 		public String id;
 		public boolean claimed;
 
-		public RewardItem(String id, ParseObject deal ) {
+		public RewardItem(String id, boolean claimed, ParseObject deal ) {
 			this.deal = deal;
 			this.id = id;
-			this.claimed = isClaimed();
+			this.claimed = claimed;
 		}
 
 		@Override
 		public String toString() {
-			return deal.getString("sponsor") + ": " + deal.getString("descShort");
+			return deal.getString("sponsor") + ": " + deal.getString("descShort") + " claimed: " + claimed; 
 		}
-		
-		private boolean isClaimed(){
-			return false; //TODO: implement
-		}
+
 	}
 }

@@ -77,8 +77,10 @@ public class PopularDetailFragment extends Fragment {
 			
 			redeemButton = ((Button) rootView.findViewById(R.id.redeemButton));
 			if(mItem.claimed){
+				Log.d("claimed", "already claimed");
 				setAlreadyClaimed();
 			} else {
+				Log.d("not claimed", "not claimed");
 				redeemButton.setText("Redeem - " + mItem.deal.getInt("cost") + " points");
 				redeemButton.setOnClickListener(new View.OnClickListener() {
 					
@@ -110,34 +112,20 @@ public class PopularDetailFragment extends Fragment {
 		} else {
 			user.put("points", userPoints - dealCost);				// subtract points
 			ParseRelation<ParseObject> deals = user.getRelation("deals");
-			deals.add(mItem.deal);
-			
-			/**
-			List<Object> dealsClaimed = user.getList("dealsClaimed");
-			if(dealsClaimed == null){
-				List<Object> newDealsClaimed = new ArrayList<Object>();
-				newDealsClaimed.add(mItem.deal);
-				user.put("dealsClaimed", newDealsClaimed);
-			} else {
-				dealsClaimed.add(mItem.deal);	// add current deal to user's list of deals
-				user.put("dealsClaimed", dealsClaimed);
-			}
-			**/
-			
+			deals.add(mItem.deal);	// update user's list of claimed deals	
 			user.saveInBackground();
 			
 			ParseObject deal = mItem.deal;
 			deal.increment("numClaimed");
 			deal.saveInBackground();
 			
-			mItem.claimed = true;
-			setAlreadyClaimed(); // change redeem button behavior
-
+			mItem.claimed = true; // change redeem button behavior
 			
 			builder.setMessage("Enjoy your rewards!")
 		       .setTitle("Congrats!");
 			dialog = builder.create();
 			dialog.show();
+			setAlreadyClaimed(); 
 		}
 	}
 	
