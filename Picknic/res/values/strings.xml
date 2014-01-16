@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Picknic</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_id">227687914077728</string>
+    <string name="title_event_list">Rewards</string>
+    <string name="title_event_detail">Reward Details</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="QRCodeScanner">QR Code Scanner</string>
+    
+    <drawable name="background_black_scanner">#80000000</drawable>
+</resources>	
