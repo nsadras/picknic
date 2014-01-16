@@ -90,9 +90,7 @@ public class PopularDetailFragment extends Fragment {
 					}
 					
 				});
-			}
-			
-			
+			}		
 		} 
 
 		return rootView;
