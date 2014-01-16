@@ -14,3 +14,5 @@ To do
 -----
 + Make it look prettier (If anyone can do this lemme know)
 + Fix Orientation-change bug on tablets
++ Integrate QR Scanning into UI flow
++ Newsfeed 
