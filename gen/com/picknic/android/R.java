@@ -226,7 +226,7 @@ containing a value of this type.
     public static final class id {
         public static final int Xc=0x7f040008;
         public static final int action_settings=0x7f040023;
-        public static final int btnScan=0x7f04001e;
+        public static final int btnScan=0x7f04001f;
         public static final int camera_preview=0x7f040007;
         public static final int com_facebook_login_activity_progress_bar=0x7f04000b;
         public static final int com_facebook_picker_activity_circle=0x7f04000a;
@@ -257,7 +257,7 @@ containing a value of this type.
         public static final int normal=0x7f040001;
         public static final int pager=0x7f040006;
         public static final int picker_subtitle=0x7f040018;
-        public static final int points=0x7f04001f;
+        public static final int points=0x7f04001e;
         public static final int redeemButton=0x7f040021;
         public static final int small=0x7f040000;
     }

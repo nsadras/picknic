@@ -77,7 +77,7 @@ int drawable ic_launcher 0x7f020020
 int drawable scan_button 0x7f020021
 int id Xc 0x7f040008
 int id action_settings 0x7f040023
-int id btnScan 0x7f04001e
+int id btnScan 0x7f04001f
 int id camera_preview 0x7f040007
 int id com_facebook_login_activity_progress_bar 0x7f04000b
 int id com_facebook_picker_activity_circle 0x7f04000a
@@ -108,7 +108,7 @@ int id logoView 0x7f040004
 int id normal 0x7f040001
 int id pager 0x7f040006
 int id picker_subtitle 0x7f040018
-int id points 0x7f04001f
+int id points 0x7f04001e
 int id redeemButton 0x7f040021
 int id small 0x7f040000
 int layout activity_event_detail 0x7f030000
