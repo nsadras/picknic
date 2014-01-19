@@ -15,9 +15,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.picknic.android.MainActivity;
-import com.picknic.android.PopularListFragment;
-import com.picknic.android.PopularMasterFragment;
 import com.picknic.android.content.RewardListContent.RewardItem;
+import com.picknic.android.popular.PopularListFragment;
+import com.picknic.android.popular.PopularMasterFragment;
 
 public class NewsfeedContent {
 	public static boolean dataLoaded = false;

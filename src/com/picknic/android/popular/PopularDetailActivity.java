@@ -1,4 +1,9 @@
-package com.picknic.android;
+package com.picknic.android.popular;
+
+import com.picknic.android.MainActivity;
+import com.picknic.android.R;
+import com.picknic.android.R.id;
+import com.picknic.android.R.layout;
 
 import android.content.Intent;
 import android.os.Bundle;

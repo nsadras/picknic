@@ -1,4 +1,4 @@
-package com.picknic.android;
+package com.picknic.android.popular;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.picknic.android.R;
+import com.picknic.android.R.bool;
 import com.picknic.android.content.RewardListContent;
 
 /**

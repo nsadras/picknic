@@ -17,8 +17,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.picknic.android.MainActivity;
-import com.picknic.android.PopularListFragment;
-import com.picknic.android.PopularMasterFragment;
+import com.picknic.android.popular.PopularListFragment;
+import com.picknic.android.popular.PopularMasterFragment;
 
 /**
  * Class for fetching app content from Parse
@@ -131,7 +131,7 @@ public class RewardListContent {
 
 		@Override
 		public String toString() {
-			return deal.getString("sponsor") + ": " + deal.getString("descShort") + " claimed: " + claimed; 
+			return deal.getString("sponsor") + ": " + deal.getString("descShort"); 
 		}
 
 	}

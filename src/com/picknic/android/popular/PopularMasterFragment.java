@@ -1,5 +1,8 @@
-package com.picknic.android;
+package com.picknic.android.popular;
 
+import com.picknic.android.R;
+import com.picknic.android.R.id;
+import com.picknic.android.R.layout;
 import com.picknic.android.content.RewardListContent;
 
 import android.app.Activity;

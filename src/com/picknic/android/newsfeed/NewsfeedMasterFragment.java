@@ -1,4 +1,7 @@
-package com.picknic.android;
+package com.picknic.android.newsfeed;
+
+import com.picknic.android.R;
+import com.picknic.android.R.layout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

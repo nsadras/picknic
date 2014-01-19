@@ -9,6 +9,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
+import com.picknic.android.popular.PopularDetailActivity;
+import com.picknic.android.popular.PopularDetailFragment;
+import com.picknic.android.popular.PopularListFragment;
 import com.picknic.android.tabAdapter.TabPagerAdapter;
 
 public class MainActivity extends FragmentActivity implements 

@@ -1,4 +1,4 @@
-package com.picknic.android;
+package com.picknic.android.popular;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.parse.ParseObject;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.picknic.android.R;
+import com.picknic.android.R.id;
+import com.picknic.android.R.layout;
 import com.picknic.android.content.RewardListContent;
 
 /**

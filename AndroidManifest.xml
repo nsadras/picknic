@@ -47,7 +47,7 @@
             android:name="com.picknic.android.EventListActivity"
             android:label="@string/title_event_list"/>
         <activity
-            android:name="com.picknic.android.PopularDetailActivity"
+            android:name="com.picknic.android.popular.PopularDetailActivity"
             android:label="@string/title_event_detail"
             android:parentActivityName=".EventListActivity" >
             <meta-data
