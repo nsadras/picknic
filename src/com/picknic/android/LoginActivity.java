@@ -19,6 +19,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.model.GraphUser;
 import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
@@ -140,14 +143,15 @@ public class LoginActivity extends Activity {
         		if (user == null) {
         			Log.d(PicknicApplication.TAG, "Uh oh. The user cancelled the Facebook login.");
 					Log.d(PicknicApplication.TAG,"Code " + err.getMessage());
-        		}
-        		else if (user.isNew()) {
+        		} else if (user.isNew()) {
         			Log.d(PicknicApplication.TAG, "User signed up and logged in through Facebook!");
+        			user.put("points", 0);
+        			getFacebookIdInBackground();
 					showMainActivity();
-        		}
-        		else {
+        		} else {
         			Log.d(PicknicApplication.TAG, "User logged in through Facebook!");
-					showMainActivity();
+					getFacebookIdInBackground();
+        			showMainActivity();
         		}
         	}
         });
@@ -156,6 +160,18 @@ public class LoginActivity extends Activity {
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("isLogged", true);
         editor.commit();
+    }
+    
+    private static void getFacebookIdInBackground() {
+    	Request.newMeRequest(ParseFacebookUtils.getSession(), new Request.GraphUserCallback() {
+			@Override
+			public void onCompleted(GraphUser user, Response response) {
+				if (user != null) {
+	    	        ParseUser.getCurrentUser().put("fbId", user.getId());
+	    	        ParseUser.getCurrentUser().saveInBackground();
+	    	      }
+			}
+		}).executeAsync();  
     }
 
     /**

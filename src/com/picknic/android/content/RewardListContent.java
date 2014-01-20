@@ -40,6 +40,7 @@ public class RewardListContent {
 
 	public static void setContent(Context context, PopularMasterFragment fragment){
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Deal");
+		query.orderByDescending("numClaimed"); 	// order by popularity TODO: factor in how old the deal is
 		activity = (MainActivity) context;
 		list_fragment = fragment;
 

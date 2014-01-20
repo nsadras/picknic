@@ -9,13 +9,19 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.model.GraphUser;
+import com.parse.ParseFacebookUtils;
+import com.parse.ParseUser;
 import com.picknic.android.popular.PopularDetailActivity;
 import com.picknic.android.popular.PopularDetailFragment;
 import com.picknic.android.popular.PopularListFragment;
+import com.picknic.android.newsfeed.*;
 import com.picknic.android.tabAdapter.TabPagerAdapter;
 
 public class MainActivity extends FragmentActivity implements 
-	ActionBar.TabListener, PopularListFragment.Callbacks {
+	ActionBar.TabListener, PopularListFragment.Callbacks{
 	
 	private ViewPager viewPager;
 	private TabPagerAdapter mAdapter;
@@ -30,6 +36,18 @@ public class MainActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		
+		Request.newMeRequest(ParseFacebookUtils.getSession(), new Request.GraphUserCallback() {
+			@Override
+			public void onCompleted(GraphUser user, Response response) {
+				if (user != null) {
+	    	        ParseUser.getCurrentUser().put("fbId", user.getId());
+	    	        ParseUser.getCurrentUser().put("name", user.getFirstName() + " " + user.getLastName());
+	    	        ParseUser.getCurrentUser().saveInBackground();
+	    	      }
+			}
+		}).executeAsync(); 
 		
 		viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
