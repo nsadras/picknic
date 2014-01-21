@@ -40,7 +40,7 @@ public class BasketMasterFragment extends Fragment{
 	            
 				@Override
 	            public void done(ParseObject user, ParseException err) {			
-					pointDisplay.setText(Integer.toString(user.getInt("points")) + " points");
+					pointDisplay.setText(Integer.toString(user.getInt("points")) +" points");
 				}
 				
 			});
