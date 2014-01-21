@@ -225,6 +225,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int Xc=0x7f040008;
+        public static final int action_logout=0x7f040024;
         public static final int action_settings=0x7f040023;
         public static final int btnScan=0x7f04001f;
         public static final int camera_preview=0x7f040007;

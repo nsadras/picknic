@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -17,7 +18,6 @@ import com.parse.ParseUser;
 import com.picknic.android.popular.PopularDetailActivity;
 import com.picknic.android.popular.PopularDetailFragment;
 import com.picknic.android.popular.PopularListFragment;
-import com.picknic.android.newsfeed.*;
 import com.picknic.android.tabAdapter.TabPagerAdapter;
 
 public class MainActivity extends FragmentActivity implements 
@@ -85,11 +85,27 @@ public class MainActivity extends FragmentActivity implements
 
 	}
 	
-@Override
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch(item.getItemId()){
+			case R.id.action_logout:
+				if(ParseFacebookUtils.getSession() != null){
+					ParseFacebookUtils.getSession().closeAndClearTokenInformation();
+				}
+				ParseUser.logOut();
+				showLoginActivity();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+				
+		}
 	}
 
 	// TODO implement auto-generated methods
@@ -138,5 +154,10 @@ public class MainActivity extends FragmentActivity implements
 			detailIntent.putExtra(PopularDetailFragment.ARG_ITEM_ID, id);
 			startActivity(detailIntent);
 		} 
+	}
+	
+	private void showLoginActivity(){
+		Intent intent = new Intent(this,LoginActivity.class);
+    	startActivity(intent);
 	}
 }

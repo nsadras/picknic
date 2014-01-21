@@ -76,6 +76,7 @@ int drawable com_facebook_usersettingsfragment_background_gradient 0x7f02001f
 int drawable ic_launcher 0x7f020020
 int drawable scan_button 0x7f020021
 int id Xc 0x7f040008
+int id action_logout 0x7f040024
 int id action_settings 0x7f040023
 int id btnScan 0x7f04001f
 int id camera_preview 0x7f040007
