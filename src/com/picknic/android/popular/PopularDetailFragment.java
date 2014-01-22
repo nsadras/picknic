@@ -1,5 +1,7 @@
 package com.picknic.android.popular;
 
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.picknic.android.R;
@@ -114,6 +119,16 @@ public class PopularDetailFragment extends Fragment {
 			ParseRelation<ParseObject> deals = user.getRelation("deals");
 			deals.add(mItem.deal);	// update user's list of claimed deals	
 			user.saveInBackground();
+			
+			//ADD A NEW TRANSACTION AND ADD THE TRANSACTIONS TO THE USER'S TABLE
+			ParseObject transaction = new ParseObject("Transaction");	
+			transaction.put("user", user);
+			transaction.put("deal", mItem.deal);
+			transaction.saveInBackground();
+			ParseRelation<ParseObject> transactions = user.getRelation("transactions");
+			transactions.add(transaction);	// update user's list of transactions	
+			user.saveInBackground();
+			//END OF TRANSACTION
 			
 			ParseObject deal = mItem.deal;
 			deal.increment("numClaimed");

@@ -18,6 +18,7 @@ import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.picknic.android.MainActivity;
 import com.picknic.android.newsfeed.NewsfeedMasterFragment;
@@ -85,10 +86,16 @@ public class NewsfeedContent {
 				    	  List<ParseUser> friendUsers = friendQuery.find();
 				    	  int id = 0;
 				    	  for(ParseUser friend : friendUsers){
-				    		  NewsfeedItem news = new NewsfeedItem(Integer.toString(id), friend.getString("name"));
-				    		  addItem(news);
-				    		  Log.d("newsfeed", "found friend");
-				    		  id++;
+				    		  //GO THROUGH THE TRANSACTIONS FOR EACH FRIEND AND ADD IT AS A NEWSFEEDITEM
+				    		  List<ParseObject> transactions = friend.getRelation("transactions").getQuery().find();
+				    		  for (ParseObject transaction : transactions) {
+				    			  NewsfeedItem news = new NewsfeedItem(Integer.toString(id), 
+				    					  transaction.getParseUser("user").getString("name"),
+				    					  transaction.getParseObject("deal"));
+				    			  addItem(news);
+				    			  Log.d("newsfeed", "found friend");
+				    			  id++;
+				    		  }
 				    	  }
 				    	  
 				      } catch(ParseException e){
@@ -140,6 +147,14 @@ public class NewsfeedContent {
 			this.id = id;
 			this.user = user;
 		}
+		
+		//NEW CONSTRUCTOR TO INCLUDE DEAL
+		public NewsfeedItem(String id, String user, ParseObject deal) {
+			this.id = id;
+			this.user = user;
+			this.deal = deal;
+		}
+		
 		/**
 		public NewsfeedItem(String id, ParseObject transaction) {
 			this.id = id;
@@ -149,7 +164,7 @@ public class NewsfeedContent {
 
 		@Override
 		public String toString() {
-			return user + " claimed a deal";
+			return user + " claimed a deal from " + deal.getString("sponsor");
 		}
 	}
 }
