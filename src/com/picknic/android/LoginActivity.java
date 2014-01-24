@@ -3,6 +3,7 @@ package com.picknic.android;
 import java.util.Arrays;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -37,6 +38,11 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        
+		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME); 
+		getActionBar().setCustomView(R.layout.action_bar_custom);
+		View homeIcon = findViewById(android.R.id.home);
+		((View) homeIcon.getParent()).setVisibility(View.GONE);
     
         //Set parse analytics as a tracker for picknic
         ParseAnalytics.trackAppOpened(getIntent());

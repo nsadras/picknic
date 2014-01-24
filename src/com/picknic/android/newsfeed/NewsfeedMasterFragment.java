@@ -77,7 +77,6 @@ public class NewsfeedMasterFragment extends ListFragment {
 			NewsfeedContent.setContent(getActivity(), this);
 			Log.d("newsfeed", "saved instance state null, generating content");
 		}
-		
 		setListAdapter(new ArrayAdapter<NewsfeedContent.NewsfeedItem>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, NewsfeedContent.ITEMS));

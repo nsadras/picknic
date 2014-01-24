@@ -73,8 +73,8 @@ public class PopularListFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, RewardListContent.ITEMS));
+				R.layout.popular_list_row,
+				R.id.desc, RewardListContent.ITEMS));
 	}
 
 	@Override

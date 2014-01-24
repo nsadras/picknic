@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.picknic.android.R;
 import com.picknic.android.MainActivity;
 import com.picknic.android.popular.PopularListFragment;
 import com.picknic.android.popular.PopularMasterFragment;
@@ -90,8 +92,8 @@ public class RewardListContent {
 		    	
 		    	// refresh listFragment
 		    	listFragment.setListAdapter(new ArrayAdapter<RewardListContent.RewardItem>(activity,
-						android.R.layout.simple_list_item_activated_1,
-						android.R.id.text1, RewardListContent.ITEMS));		    	
+		    			R.layout.popular_list_row,
+						R.id.desc, RewardListContent.ITEMS));		    	
 		    }
 		});
 		

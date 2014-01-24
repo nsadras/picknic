@@ -42,6 +42,9 @@ public class NewsfeedContent {
 		 *  TODO: write a parse query that finds all picknic user that are friends of the
 		 *  current user, finds their transactions, and organizes them chronologically
 		 */
+		if(dataLoaded){
+			return;
+		}
 		list_fragment = fragment;
 		activity = (MainActivity) context;
 		//addItem(new NewsfeedItem("1", "Bob"));
@@ -97,10 +100,11 @@ public class NewsfeedContent {
 				      //NewsfeedListFragment listFragment = (NewsfeedListFragment) (list_fragment.getFragmentManager().findFragmentByTag("newsfeed_list"));
 				    	
 			    	// refresh listFragment
+				      dataLoaded = true;
 				     if(list_fragment != null){ 
 				    	 list_fragment.setListAdapter(new ArrayAdapter<NewsfeedContent.NewsfeedItem>(activity,
 							android.R.layout.simple_list_item_activated_1,
-							android.R.id.text1, NewsfeedContent.ITEMS)); 
+							android.R.id.text1, NewsfeedContent.ITEMS));
 				     }
 				}
 			}
