@@ -91,10 +91,15 @@ public class NewsfeedContent {
 				    	  for(ParseUser friend : friendUsers){
 				    		  //GO THROUGH THE TRANSACTIONS FOR EACH FRIEND AND ADD IT AS A NEWSFEEDITEM
 				    		  List<ParseObject> transactions = friend.getRelation("transactions").getQuery().find();
+				    		  
 				    		  for (ParseObject transaction : transactions) {
+				    			  ParseUser tempUser = transaction.getParseUser("user");
+//				    			  Log.d("DEBUG", "TRANSACTION'S USER'S NAME: " + tempUser.getString("name"));
+
 				    			  NewsfeedItem news = new NewsfeedItem(Integer.toString(id), 
-				    					  transaction.getParseUser("user").getString("name"),
-				    					  transaction.getParseObject("deal"));
+				    					  transaction.getParseUser("user").fetchIfNeeded().getString("name"),
+				    					  transaction.getParseObject("deal").fetchIfNeeded());
+
 				    			  addItem(news);
 				    			  Log.d("newsfeed", "found friend");
 				    			  id++;
