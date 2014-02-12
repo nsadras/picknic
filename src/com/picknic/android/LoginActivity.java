@@ -143,7 +143,7 @@ public class LoginActivity extends Activity {
         			LoginActivity.this.progressDialog.dismiss();
 				} 
 				catch (Exception e) {
-                	// nothing
+                	e.printStackTrace();
 				}
         		
         		if (user == null) {

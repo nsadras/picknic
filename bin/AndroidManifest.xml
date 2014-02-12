@@ -38,11 +38,16 @@
         <activity 
             android:name=".MainActivity"/>
         <activity 
+            android:name=".basket.PurchaseHistoryActivity"/>
+        <activity 
             android:name=".scanner.ZBarScannerActivity"
 			android:screenOrientation="landscape"/>
         <activity 
             android:name=".scanner.QRCodeScannerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>            
+        <activity 
+            android:name=".scanner.HelpMeScanActivity"
+            android:screenOrientation="landscape"/>                    
         <activity
             android:name="com.picknic.android.EventListActivity"
             android:label="@string/title_event_list"/>

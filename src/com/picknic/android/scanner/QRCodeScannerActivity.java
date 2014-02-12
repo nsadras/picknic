@@ -13,22 +13,24 @@ public class QRCodeScannerActivity extends Activity {
 	private static final int ZBAR_QR_SCANNER_REQUEST = 1;
 	private final int SCAN_TYPE_QR = 64;
 	private final String SCAN_RESULT = "ScanResult";
+	private final String ERROR_INFO = "ErrorInfo";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.camera);
 		
 		if (isCameraAvailable()) {
             Intent intent = new Intent(this, ZBarScannerActivity.class);
+            intent.putExtra("title", "Picknic - QR Code Scanner");
+            intent.putExtra("backlight", "Backlight");
+            intent.putExtra("button_help", "Problem scanning?");
             startActivityForResult(intent, ZBAR_SCANNER_REQUEST);
             //intent.putExtra(ZBarConstants.SCAN_MODES, new int[]{Symbol.QRCODE}); // This would restrict the scan to only QR codes
     		//startActivityForResult(intent, ZBAR_QR_SCANNER_REQUEST);
+            return;
         } 
-		else {
             Toast.makeText(this, "Rear Facing Camera Unavailable", Toast.LENGTH_SHORT).show();
         }
-	}
 
     public boolean isCameraAvailable() {
         PackageManager pm = getPackageManager();
@@ -63,13 +65,16 @@ public class QRCodeScannerActivity extends Activity {
     	else if(resultCode == RESULT_CANCELED) {
     		if(data != null) {
             	String error = data.getStringExtra(ZBarConstants.ERROR_INFO);
+            	Intent sendBackRes = new Intent();
+        		sendBackRes.putExtra(ERROR_INFO, error);
+        		setResult(RESULT_CANCELED, sendBackRes);
                 
                 if(!TextUtils.isEmpty(error)) {
                 	Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
                 }    			
     		}
     		else { // case where back button was pressed
-    			Toast.makeText(this, "Back button pressed.", Toast.LENGTH_SHORT).show();
+    			//Toast.makeText(this, "Back button pressed.", Toast.LENGTH_SHORT).show();
     		}
     		finish();
         }    	    	

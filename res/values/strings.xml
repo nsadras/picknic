@@ -7,7 +7,21 @@
     <string name="title_event_list">Rewards</string>
     <string name="title_event_detail">Reward Details</string>
     <string name="title_activity_main">MainActivity</string>
+    
     <string name="QRCodeScanner">QR Code Scanner</string>
+    <string name="scanQRCode">Scan QR Code</string>
+	<string name="purchaseHistory">Purchase History</string>
+	<string name="myPurchaseHistory">My Purchase History</string>    
+    <string name="help1">Scan hints</string>
+    <string name="help2">To make scan successful make sure the camera is not too close to the code, there is plenty of light, the camera is on focus.</string>
+    <string name="help3">Different distances</string>
+    <string name="help4">Try moving your device closer or further away to find optimal scan distance.</string>
+    <string name="help5">Ideal contrast</string>
+    <string name="help6">Enough light means faster scan. Also make sure there are no glares and shadows over the code.</string>
+    <string name="help7">Focus on code</string>
+    <string name="help8">Make sure your device is not too close to the code and the camera is in focus.</string>
+    <string name="help9">Hold still</string>
+    <string name="help10">Do not read the code on the diagonal as well as shake your device.</string>
     
     <drawable name="background_black_scanner">#80000000</drawable>
 </resources>	

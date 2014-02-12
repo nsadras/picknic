@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dip"
+    android:orientation="vertical" >
+        
+	<LinearLayout android:id="@+id/LinearLayout02"
+    	android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+			<TextView android:layout_width="wrap_content" android:textStyle="bold"
+				android:layout_height="wrap_content" android:text="Provider"
+				android:id="@+id/tvProvider" android:textSize="17sp"
+				android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"></TextView>
+	</LinearLayout> 
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent">
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 
+				android:text="Reward Points  " android:textSize="15sp" 
+				android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Points"
+				android:id="@+id/tvPoints" android:textSize="15sp" android:layout_weight="1" />
+	</LinearLayout>
+		<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Points"
+				android:id="@+id/tvTime" android:textSize="11sp" android:layout_weight="1" 
+				android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"/>
+	</LinearLayout>
+</LinearLayout>

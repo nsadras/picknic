@@ -64,6 +64,7 @@ public class RewardListContent {
 		            	dealsClaimed = dealsClaimedRelation.getQuery().find(); // do synchronously because we're already in an async callback
 		            } catch(Exception err){
 		            	Log.d("relation query callback error", err.toString());
+		            	stopLoading();
 		            	return;
 		            }
 		            

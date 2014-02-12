@@ -17,8 +17,13 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-  <!-- NOTE: This is just a placeholder for the QR scan button.Needs to be removed later after 
-				integration to the main UI -->
+	<style name="HelpPageDivider">
+        <item name="android:background">?android:listDivider</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1.0dip</item>
+    </style>
+    
+  <!-- NOTE: This is just a placeholder for the QR scan button.Needs to be removed later after integration to the main UI -->
   <style name="button_text" >
     <item name="android:layout_width" >fill_parent</item>
     <item name="android:layout_height" >wrap_content</item>

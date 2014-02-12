@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.picknic.android.BasketMasterFragment;
+import com.picknic.android.basket.BasketMasterFragment;
 import com.picknic.android.newsfeed.NewsfeedMasterFragment;
 import com.picknic.android.popular.PopularMasterFragment;
 
